@@ -12,7 +12,7 @@ public class LoginService {
         Collection<Usuario> usuarios = DB.getUsuarios();
         Usuario usrEncontrado = null;
         for (Usuario u : usuarios) {
-            if (u.getUsuario().equals(apodo)) {
+            if (u.getApodo().equals(apodo)) {
                 usrEncontrado = u;
                 break;
             }

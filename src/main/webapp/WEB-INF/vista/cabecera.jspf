@@ -25,5 +25,15 @@
 <div id='cabecera' class="row">
     <div class="col-sm-2">  </div>
     <div class="col-sm-8"> LISTA DE TAREAS </div>
-    <div class="col-sm-2">  </div>
+    <div class="col-sm-2">  
+        <c:choose>
+            <c:when test="${not empty sessionScope.usuario}"> 
+                <h5> <b> Apodo: </b> ${sessionScope.usuario.apodo} </br> </br>
+                <a href="logout"> Logout </a> </h5>
+            </c:when>
+            <c:otherwise > 
+                <h5> <a href="Login.jsp"> Login </a> </h5>
+            </c:otherwise>
+        </c:choose>
+    </div>
 </div>

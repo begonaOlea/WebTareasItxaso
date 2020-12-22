@@ -14,7 +14,7 @@
         <%@include file="WEB-INF/vista/cabecera.jspf" %>
         <%@include file="WEB-INF/vista/menu.jspf" %>
         <h1 style="text-align: center"> INICIAR SESION </h1>         
-        <form action='alta-usuario' method="post">
+        <form action='login' method="post">
             <div class="row">
                 <div class="col">
                     <label for='apodo'> Apodo:  </label>

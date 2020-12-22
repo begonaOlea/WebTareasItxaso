@@ -30,11 +30,11 @@ public class Usuario implements Serializable{
     }
     
     
-    public String getUsuario() {
+    public String getApodo() {
         return apodo;
     }
 
-    public void setUsuario(String usuario) {
+    public void setApodo(String usuario) {
         this.apodo = usuario;
     }
 
