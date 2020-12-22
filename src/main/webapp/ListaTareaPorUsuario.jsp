@@ -22,14 +22,17 @@
                 <th> DESCRIPCION </th>
                 <th> ESTADO </th>
                 <th> ID USUARIO </th>
+                <th> EN PROCESO </th>
             </tr>
             <% for (Tareas t : lista) {
-                    if (t.getEstado() == Estados.TODO) {%>
+                    if (t.getEstado() == Estados.TODO) {
+                        %>
             <tr>
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
                 <td> <%= t.getEstado().getValor()%> </td>
                 <td> <%= t.getIDUsuario()%></td>
+                <td> CREA UN SERVLET </td>
             </tr>
             <% }
                 }%>

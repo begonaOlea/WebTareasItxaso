@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class DB {
+    
+    
     private static Map<Integer, Tareas> tarea;
     private static Set<Usuario> usuarios;
     
@@ -19,6 +21,9 @@ public class DB {
         tarea.put(4, new Tareas(4, "Hacer resumen de pelicula", Estados.INPROGRESS, 2));
         tarea.put(5, new Tareas(5, "Hacer presentacion", Estados.DONE, 3));
         tarea.put(6, new Tareas(6, "Ensayar presentacion", Estados.INPROGRESS, 3));
+        tarea.put(7, new Tareas(7, "Estudiar programacion", Estados.TODO, 3));
+        tarea.put(8, new Tareas(8, "Hacer examen frances", Estados.DONE, 1));
+        tarea.put(9, new Tareas(9, "Recoger hojas", Estados.TODO, 2));
         
         usuarios = new HashSet<Usuario>();
         usuarios.add(new Usuario(1, "pepe.martinez", "Pepe", "Martinez", "pepe123"));
@@ -30,6 +35,51 @@ public class DB {
     
     public static synchronized Collection<Tareas> getAllTareas(){
          return tarea.values();
+    }
+    
+    public static synchronized Collection<Tareas> getTareasPorUsuario(String usuario){
+        
+        return tarea.values();
+    }
+    
+    public static synchronized Collection<Tareas> TodoAInprocess(int id){
+        Collection<Tareas> lista = DB.getAllTareas();
+        for(Tareas t : lista){
+            if(t.getIDTarea() == id){
+                tarea.get(id).setEstado(Estados.INPROGRESS);
+            }
+        }
+        return null;
+    }
+    
+    public static synchronized Collection<Tareas> InprocessADone(int id){
+        Collection<Tareas> lista = DB.getAllTareas();
+        for(Tareas t : lista){
+            if(t.getIDTarea() == id){
+                tarea.get(id).setEstado(Estados.DONE);
+            }
+        }
+        return null;
+    }
+    
+    public static synchronized Collection<Tareas> DoneAInprocess(int id){
+        Collection<Tareas> lista = DB.getAllTareas();
+        for(Tareas t : lista){
+            if(t.getIDTarea() == id){
+                tarea.get(id).setEstado(Estados.INPROGRESS);
+            }
+        }
+        return null;
+    }
+    
+    public static synchronized Collection<Tareas> InprocessATodo(int id){
+        Collection<Tareas> lista = DB.getAllTareas();
+        for(Tareas t : lista){
+            if(t.getIDTarea() == id){
+                tarea.get(id).setEstado(Estados.TODO);
+            }
+        }
+        return null;
     }
     
     public static synchronized Collection<Usuario> getUsuarios(){
