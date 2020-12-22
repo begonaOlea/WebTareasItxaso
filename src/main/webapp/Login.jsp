@@ -13,12 +13,12 @@
     <body>
         <%@include file="WEB-INF/vista/cabecera.jspf" %>
         <%@include file="WEB-INF/vista/menu.jspf" %>
-        Para visualizar sus tareas, inicie sesion: 
+        <h1 style="text-align: center"> INICIAR SESION </h1>         
         <form action='alta-usuario' method="post">
             <div class="row">
                 <div class="col">
-                    <label for='usuario'> Usuario:  </label>
-                    <input type='text' class="form-control" id='usuario' name="usuario" placeholder="${requestScope.mensajeUsuario}" /> </br>
+                    <label for='apodo'> Apodo:  </label>
+                    <input type='text' class="form-control" id='apodo' name="apodo" placeholder="${requestScope.mensajeApodo}" /> </br>
                 </div>
             </div>
             <div class="row">

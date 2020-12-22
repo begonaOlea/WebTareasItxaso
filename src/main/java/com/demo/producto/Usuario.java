@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Usuario implements Serializable{
     // ATRIBUTOS
     private int id;
-    private String usuario;
+    private String apodo;
     private String nombre;
     private String apellido;
     private String contraseña;
@@ -14,7 +14,7 @@ public class Usuario implements Serializable{
     // CONSTRUCTOR
     public Usuario(int id, String usuario, String nombre, String apellido, String contraseña) {
         this.id = id;
-        this.usuario = usuario;
+        this.apodo = usuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.contraseña = contraseña;
@@ -31,11 +31,11 @@ public class Usuario implements Serializable{
     
     
     public String getUsuario() {
-        return usuario;
+        return apodo;
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario;
+        this.apodo = usuario;
     }
 
     public String getNombre() {
@@ -66,7 +66,7 @@ public class Usuario implements Serializable{
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", usuario=" + usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", contrase\u00f1a=" + contraseña + '}';
+        return "Usuario{" + "id=" + id + ", usuario=" + apodo + ", nombre=" + nombre + ", apellido=" + apellido + ", contrase\u00f1a=" + contraseña + '}';
     }
     
     
@@ -75,7 +75,7 @@ public class Usuario implements Serializable{
     public int hashCode() {
         int hash = 3;
         hash = 67 * hash + this.id;
-        hash = 67 * hash + Objects.hashCode(this.usuario);
+        hash = 67 * hash + Objects.hashCode(this.apodo);
         return hash;
     }
 
@@ -94,7 +94,7 @@ public class Usuario implements Serializable{
         if (this.id != other.id) {
             return false;
         }
-        if (!Objects.equals(this.usuario, other.usuario)) {
+        if (!Objects.equals(this.apodo, other.apodo)) {
             return false;
         }
         return true;

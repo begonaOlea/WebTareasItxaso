@@ -3,9 +3,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title> TAREA USUARIO </title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="WEB-INF/vista/cabecera.jspf" %>
+        <%@include file="WEB-INF/vista/menu.jspf" %>
+        <h1 style="text-align: center"> TAREAS DEL USUARIO </h1>
     </body>
 </html>
