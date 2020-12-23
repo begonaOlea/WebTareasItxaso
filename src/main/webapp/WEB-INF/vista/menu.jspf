@@ -14,7 +14,6 @@
     }
 </style>
 <div id='menu'>
-    <a href="index.jsp" > MENU PRINCIPAL </a>  ||
     <a href="ListaTareasTodas.jsp"> TAREAS COMUNES </a> || 
     <a href="lista-tarea-usuario"> MIS TAREAS </a> 
 </div>

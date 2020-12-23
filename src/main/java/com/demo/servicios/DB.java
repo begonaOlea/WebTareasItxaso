@@ -1,5 +1,6 @@
 package com.demo.servicios;
 
+import com.demo.excepciones.DBException;
 import com.demo.producto.*;
 import java.util.Collection;
 import java.util.HashMap;
@@ -47,7 +48,7 @@ public class DB {
         return listaTareaUsuario;
     }
 
-    public static synchronized Collection<Tareas> CambiarEstado(int id, String estado) {
+    public static synchronized void CambiarEstado(int id, String estado) {
         Collection<Tareas> lista = DB.getAllTareas();
         if(estado.equals("hacer")){
             tarea.get(id).setEstado(Estados.TODO);
@@ -58,11 +59,24 @@ public class DB {
         if(estado.equals("hecho")){
             tarea.get(id).setEstado(Estados.DONE);
         }
-        return null;
     }
     
     public static synchronized Collection<Usuario> getUsuarios() {
         return usuarios;
+    }
+    
+    public synchronized static void altaTarea(Tareas t) throws DBException{
+        if (tarea.containsKey(t.getIDTarea())){
+            throw new DBException ("La tarea con el ID  " + t.getIDTarea() + " ya existe.");
+        }
+        tarea.put(t.getIDTarea(), t);
+    }
+    
+    public synchronized static void altaUsuario(Usuario u) throws DBException{
+        if (usuarios.contains(u.getId())){
+            throw new DBException ("El usuario con el ID  " + u.getId() + " ya existe.");
+        }
+        usuarios.add(u);
     }
 
 }

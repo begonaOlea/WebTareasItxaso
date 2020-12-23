@@ -38,15 +38,7 @@ public class CambioEstadoServlet extends HttpServlet {
 
         if(mensajeEstado == null || mensajeId == null){
             id = Integer.parseInt(paramId);
-            switch(paramEstado){
-                case "hacer":
-                    DB.CambiarEstado(id, paramEstado);
-                case "enproceso":
-                    DB.CambiarEstado(id, paramEstado);
-                case "hecho":
-                    DB.CambiarEstado(id, paramEstado);
-            }
-            
+            DB.CambiarEstado(id, paramEstado);
         }
         
         if (! valido){
@@ -54,7 +46,6 @@ public class CambioEstadoServlet extends HttpServlet {
             req.setAttribute("mensajeEstado", mensajeEstado);
         }
         
-        RequestDispatcher rd = req.getRequestDispatcher("ListaTareaPorUsuario.jsp");
-        rd.forward(req, resp);
+        resp.sendRedirect("lista-tarea-usuario");
     }
 }

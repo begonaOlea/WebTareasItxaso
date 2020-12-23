@@ -16,19 +16,19 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          //LEER PARAMETROS
-        String paramCorreo = req.getParameter("correo");
+        String paramApodo = req.getParameter("apodo");
         String paramContraseña = req.getParameter("contrasena");
 
         boolean valido = true;
         String jspAMostrar = null;
 
-        String mensajeCorreo = null;
+        String mensajeApodo = null;
         String mensajeContraseña = null;
         String mensajeException = null;
 
         // VALIDAR
-        if (paramCorreo == null || paramCorreo.trim().length() == 0) {
-            mensajeCorreo = "Debe indicar un correo.";
+        if (paramApodo == null || paramApodo.trim().length() == 0) {
+            mensajeApodo = "Debe indicar un correo.";
             valido = false;
         }
 
@@ -37,12 +37,12 @@ public class LoginServlet extends HttpServlet {
             valido = false;
         }
 
-        if (mensajeContraseña == null || mensajeCorreo == null || mensajeException == null) {
+        if (mensajeContraseña == null || mensajeApodo == null || mensajeException == null) {
             //VALIDAR PARAMETROS
             HttpSession sesion = req.getSession();
             LoginService servicio = new LoginService();
             try {
-                servicio.logIn(paramCorreo, paramContraseña, sesion);
+                servicio.logIn(paramApodo, paramContraseña, sesion);
             } catch (LoginException ex) {
                 mensajeException = ex.getMessage();
             }
@@ -51,8 +51,8 @@ public class LoginServlet extends HttpServlet {
         if (valido) {
             jspAMostrar = "index.jsp";
         } else {
-            jspAMostrar = "login.jsp";
-            req.setAttribute("mensajeCorreo", mensajeCorreo);
+            jspAMostrar = "Login.jsp";
+            req.setAttribute("mensajeApodo", mensajeApodo);
             req.setAttribute("mensajeContraseña", mensajeContraseña);
             req.setAttribute("mensajeException", mensajeException);
         }

@@ -72,5 +72,7 @@
             <% }
                 }%>
         </table>
+        <hr>
+        <a href="NuevaTarea.jsp" class="btn btn-primary"> NUEVA TAREA </a>
     </body>
 </html>

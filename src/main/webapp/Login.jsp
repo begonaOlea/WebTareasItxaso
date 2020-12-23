@@ -14,6 +14,11 @@
         <%@include file="WEB-INF/vista/cabecera.jspf" %>
         <%@include file="WEB-INF/vista/menu.jspf" %>
         <h1 style="text-align: center"> INICIAR SESION </h1>         
+        <c:if test="${not empty requestScope.mensajeException}">
+            <div class="alert alert-success" role="alert">
+                ${requestScope.mensajeException}
+            </div>
+        </c:if>
         <form action="login" method="post">
             <div class="row">
                 <div class="col">
@@ -27,7 +32,9 @@
                     <input type='text' class="form-control" id='contrasena' name="contrasena" placeholder="${requestScope.mensajeContraseña}"/> </br>
                 </div>
             </div>
-            <button type='submit' class="btn btn-primary"> Iniciar sesion </button>
+            <button type='submit' class="btn btn-primary"> INICIAR SESION </button>
         </form>
+                <hr>
+                <a href="NuevoUsuario.jsp" class="btn btn-primary"> REGISTRARSE </a>
     </body>
 </html>
