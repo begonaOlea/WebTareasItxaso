@@ -19,60 +19,71 @@
         <%
             Collection<Tareas> lista = DB.getAllTareas();
         %>
-        <h1 style="text-align: center"> TAREAS POR HACER </h1>
-        <table class="table table-hover" >
-            <tr>
-                <th> ID TAREA </th>
-                <th> DESCRIPCION </th>
-                <th> ID USUARIO </th>
-            </tr>
-            <% for (Tareas t : lista) {
+
+        <div class="row">
+        <div class="col-4">
+            <h1 style="text-align: center"> TAREAS POR HACER </h1>
+            <table class="table table-hover" >
+                <tr>
+                    <th> ID TAREA </th>
+                    <th> DESCRIPCION </th>
+                    <th> ID USUARIO </th>
+                </tr>
+                <% for (Tareas t : lista) {
                     if (t.getEstado() == Estados.TODO) {%>
-            <tr>
-                <td> <%= t.getIDTarea()%>  </td>
-                <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getIDUsuario()%></td>
-            </tr>
-            <% }
+                <tr>
+                    <td> <%= t.getIDTarea()%>  </td>
+                    <td> <%= t.getDescripcion()%></td>
+                    <td> <%= t.getIDUsuario()%></td>
+                </tr>
+                <% }
                 }%>
-        </table>
+            </table>
+        </div>
         </br></br>
-        <h1 style="text-align: center"> TAREAS EN PROCESO </h1>
-        <table class="table table-hover" >
-            <tr>
-                <th> ID TAREA </th>
-                <th> DESCRIPCION </th>
-                <th> ID USUARIO </th>
-            </tr>
-            <% for (Tareas t : lista) {
+
+        <div class="col-4">
+            <h1 style="text-align: center"> TAREAS EN PROCESO </h1>
+            <table class="table table-hover" >
+                <tr>
+                    <th> ID TAREA </th>
+                    <th> DESCRIPCION </th>
+                    <th> ID USUARIO </th>
+                </tr>
+                <% for (Tareas t : lista) {
                     if (t.getEstado() == Estados.INPROGRESS) {%>
-            <tr>
-                <td> <%= t.getIDTarea()%>  </td>
-                <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getIDUsuario()%></td>
-            </tr>
-            <% }
+                <tr>
+                    <td> <%= t.getIDTarea()%>  </td>
+                    <td> <%= t.getDescripcion()%></td>
+                    <td> <%= t.getIDUsuario()%></td>
+                </tr>
+                <% }
                 }%>
-        </table>
+            </table>
+        </div>
         </br></br>
-        <h1 style="text-align: center"> TAREAS FINALIZADAS </h1>
-        <table class="table table-hover" >
-            <tr>
-                <th> ID TAREA </th>
-                <th> DESCRIPCION </th>
-                <th> ID USUARIO </th>
-            </tr>
-            <% for (Tareas t : lista) {
-                if (t.getEstado() == Estados.DONE) {%>
-            <tr>
-                <td> <%= t.getIDTarea()%>  </td>
-                <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getIDUsuario()%></td>
-            </tr>
-            <% }
+
+        <div class="col-4">
+            <h1 style="text-align: center"> TAREAS FINALIZADAS </h1>
+            <table class="table table-hover" >
+                <tr>
+                    <th> ID TAREA </th>
+                    <th> DESCRIPCION </th>
+                    <th> ID USUARIO </th>
+                </tr>
+                <% for (Tareas t : lista) {
+                    if (t.getEstado() == Estados.DONE) {%>
+                <tr>
+                    <td> <%= t.getIDTarea()%>  </td>
+                    <td> <%= t.getDescripcion()%></td>
+                    <td> <%= t.getIDUsuario()%></td>
+                </tr>
+                <% }
                 }%>
-        </table>
+            </table>
+        </div>
+        </div>
         <hr>
-        <a href="NuevaTarea.jsp" class="btn btn-primary"> NUEVA TAREA </a>
+        <a href="NuevaTarea.jsp" class="btn btn-primary btn-block" > NUEVA TAREA </a>
     </body>
 </html>

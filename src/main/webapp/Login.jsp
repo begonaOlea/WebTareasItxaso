@@ -32,9 +32,9 @@
                     <input type='text' class="form-control" id='contrasena' name="contrasena" placeholder="${requestScope.mensajeContraseña}"/> </br>
                 </div>
             </div>
-            <button type='submit' class="btn btn-primary"> INICIAR SESION </button>
+            <button type='submit' class="btn btn-primary btn-block"> INICIAR SESION </button>
         </form>
-                <hr>
-                <a href="NuevoUsuario.jsp" class="btn btn-primary"> REGISTRARSE </a>
+        <hr>
+        <a href="NuevoUsuario.jsp" class="btn btn-primary btn-block"> REGISTRARSE </a>
     </body>
 </html>

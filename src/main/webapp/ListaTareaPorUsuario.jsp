@@ -17,7 +17,10 @@
         <%
             Collection<Tareas> lista = (Collection<Tareas>)request.getAttribute("lista");
         %>
-        <h1 style="text-align: center"> TAREAS POR HACER </h1>
+        
+        <div class="row">
+        <div class="col-4">
+            <h1 style="text-align: center"> TAREAS POR HACER </h1>
         <table class="table table-hover" >
             <tr>
                 <th> ID TAREA </th>
@@ -37,8 +40,10 @@
             <% }
                 }%>
         </table>
+        </div>
         </br></br>
-        <h1 style="text-align: center"> TAREAS EN PROCESO </h1>
+        <div class="col-4">
+            <h1 style="text-align: center"> TAREAS EN PROCESO </h1>
         <table class="table table-hover" >
             <tr>
                 <th> ID TAREA </th>
@@ -57,8 +62,11 @@
             <% }
                 }%>
         </table>
+        </div>
         </br></br>
-        <h1 style="text-align: center"> TAREAS FINALIZADAS </h1>
+        
+        <div class="col-4">
+            <h1 style="text-align: center"> TAREAS FINALIZADAS </h1>
         <table class="table table-hover" >
             <tr>
                 <th> ID TAREA </th>
@@ -77,5 +85,7 @@
             <% }
                 }%>
         </table>
+        </div>
+        </div>
     </body>
 </html>
