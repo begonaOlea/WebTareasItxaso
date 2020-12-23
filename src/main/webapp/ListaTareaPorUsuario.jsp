@@ -20,9 +20,9 @@
             <tr>
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
-                <th> ESTADO </th>
                 <th> ID USUARIO </th>
-                <th> EN PROCESO </th>
+                <th>  </th>
+                <th>  </th>
             </tr>
             <% for (Tareas t : lista) {
                     if (t.getEstado() == Estados.TODO) {
@@ -30,9 +30,9 @@
             <tr>
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getEstado().getValor()%> </td>
                 <td> <%= t.getIDUsuario()%></td>
-                <td> <a href="todo-inprogress?id=<%= t.getIDTarea()%>"> En proceso </a> </td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&actualEstado=<%= t.getEstado().getValor()%>&nuevoEstado=enproceso"> En proceso </a> </td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&actualEstado=<%= t.getEstado().getValor()%>&nuevoEstado=hecho"> Hecho </a> </td>
             </tr>
             <% }
                 }%>
@@ -43,15 +43,15 @@
             <tr>
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
-                <th> ESTADO </th>
                 <th> ID USUARIO </th>
+                <th> POR HACER </th>
+                <th> HECHO </th>
             </tr>
             <% for (Tareas t : lista) {
                     if (t.getEstado() == Estados.INPROGRESS) {%>
             <tr>
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getEstado().getValor()%> </td>
                 <td> <%= t.getIDUsuario()%></td>
             </tr>
             <% }

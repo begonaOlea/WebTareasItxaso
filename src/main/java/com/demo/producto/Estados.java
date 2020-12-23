@@ -1,7 +1,7 @@
 package com.demo.producto;
 
 public enum Estados {
-    TODO("To do"), INPROGRESS("In progress"), DONE("Done");
+    TODO("hacer"), INPROGRESS("enproceso"), DONE("hecho");
     
     private String valor;
 
