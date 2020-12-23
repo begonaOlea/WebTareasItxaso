@@ -13,54 +13,52 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       //LEER PARAMETROS
-       String paramApodo = req.getParameter("apodo");
-       String paramContraseña = req.getParameter("contrasena");
-       
-       boolean valido = true;
-       String jspAMostrar = null;
-       
-       String mensajeApodo = null;
-       String mensajeContraseña = null;
-       String mensajeException = null;
-       
-       // VALIDAR
-       if(paramApodo == null || paramApodo.trim().length() == 0){
-           mensajeApodo = "Debe indicar un apodo";
-           valido = false;
-       }
-       
-       if(paramContraseña == null || paramContraseña.trim().length() == 0){
-           mensajeContraseña = "Debe indicar un contraseña";
-           valido = false;
-       }
-       
-       if(mensajeApodo == null || mensajeContraseña == null){
-           HttpSession sesion = req.getSession();
-           LoginService servicio = new LoginService();
-           try {
-               servicio.logIn(paramApodo, paramContraseña, sesion);
-           } catch (LoginException ex) {
-               mensajeException = ex.getMessage();
-               valido = false;
-           }
-       }
+         //LEER PARAMETROS
+        String paramCorreo = req.getParameter("correo");
+        String paramContraseña = req.getParameter("contrasena");
+
+        boolean valido = true;
+        String jspAMostrar = null;
+
+        String mensajeCorreo = null;
+        String mensajeContraseña = null;
+        String mensajeException = null;
+
+        // VALIDAR
+        if (paramCorreo == null || paramCorreo.trim().length() == 0) {
+            mensajeCorreo = "Debe indicar un correo.";
+            valido = false;
+        }
+
+        if (paramContraseña == null || paramContraseña.trim().length() == 0) {
+            mensajeContraseña = "Debe indicar una contraseña.";
+            valido = false;
+        }
+
+        if (mensajeContraseña == null || mensajeCorreo == null || mensajeException == null) {
+            //VALIDAR PARAMETROS
+            HttpSession sesion = req.getSession();
+            LoginService servicio = new LoginService();
+            try {
+                servicio.logIn(paramCorreo, paramContraseña, sesion);
+            } catch (LoginException ex) {
+                mensajeException = ex.getMessage();
+            }
+        }
         
-       if(valido){
-           jspAMostrar = "ListaTareaPorUsuario.jsp";
-       } else {
-           jspAMostrar = "Login.jsp";
-           req.setAttribute("mensajeApodo", mensajeApodo);
-           req.setAttribute("mensajeContraseña", mensajeContraseña);
-           req.setAttribute("mensajeException", mensajeException);
-       }
-       
-       RequestDispatcher rd = req.getRequestDispatcher(jspAMostrar);
-       rd.forward(req, resp);
-       
+        if (valido) {
+            jspAMostrar = "index.jsp";
+        } else {
+            jspAMostrar = "login.jsp";
+            req.setAttribute("mensajeCorreo", mensajeCorreo);
+            req.setAttribute("mensajeContraseña", mensajeContraseña);
+            req.setAttribute("mensajeException", mensajeException);
+        }
+        
+        RequestDispatcher rd = req.getRequestDispatcher(jspAMostrar);
+        rd.forward(req, resp);
     }
-    
+ 
 }

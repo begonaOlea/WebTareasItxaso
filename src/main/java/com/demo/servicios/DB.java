@@ -37,61 +37,30 @@ public class DB {
         return tarea.values();
     }
 
-    public static synchronized Collection<Tareas> getTareasPorUsuario(String usuario) {
-
-        return tarea.values();
+    public static synchronized Collection<Tareas> getTareasPorUsuario(Usuario usr) {
+        Collection<Tareas> listaTareaUsuario = new HashSet<Tareas>();
+        for (Tareas t : tarea.values()){
+            if (t.getIDUsuario() == usr.getId()){
+                listaTareaUsuario.add(t);
+            }
+        }
+        return listaTareaUsuario;
     }
 
-    public static synchronized Collection<Tareas> TodoAInprocess(int id) {
+    public static synchronized Collection<Tareas> CambiarEstado(int id, String estado) {
         Collection<Tareas> lista = DB.getAllTareas();
-        for (Tareas t : lista) {
-            if (t.getIDTarea() == id) {
-                tarea.get(id).setEstado(Estados.INPROGRESS);
-            }
+        if(estado.equals("hacer")){
+            tarea.get(id).setEstado(Estados.TODO);
+        }
+        if(estado.equals("enproceso")){
+            tarea.get(id).setEstado(Estados.INPROGRESS);
+        }
+        if(estado.equals("hecho")){
+            tarea.get(id).setEstado(Estados.DONE);
         }
         return null;
     }
-
-    public static synchronized Collection<Tareas> TodoADone(int id) {
-        Collection<Tareas> lista = DB.getAllTareas();
-        for (Tareas t : lista) {
-            if (t.getIDTarea() == id) {
-                tarea.get(id).setEstado(Estados.DONE);
-            }
-        }
-        return null;
-    }
-
-    public static synchronized Collection<Tareas> InprocessADone(int id) {
-        Collection<Tareas> lista = DB.getAllTareas();
-        for (Tareas t : lista) {
-            if (t.getIDTarea() == id) {
-                tarea.get(id).setEstado(Estados.DONE);
-            }
-        }
-        return null;
-    }
-
-    public static synchronized Collection<Tareas> DoneAInprocess(int id) {
-        Collection<Tareas> lista = DB.getAllTareas();
-        for (Tareas t : lista) {
-            if (t.getIDTarea() == id) {
-                tarea.get(id).setEstado(Estados.INPROGRESS);
-            }
-        }
-        return null;
-    }
-
-    public static synchronized Collection<Tareas> InprocessATodo(int id) {
-        Collection<Tareas> lista = DB.getAllTareas();
-        for (Tareas t : lista) {
-            if (t.getIDTarea() == id) {
-                tarea.get(id).setEstado(Estados.TODO);
-            }
-        }
-        return null;
-    }
-
+    
     public static synchronized Collection<Usuario> getUsuarios() {
         return usuarios;
     }

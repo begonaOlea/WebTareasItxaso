@@ -1,3 +1,5 @@
+<%@page import="com.demo.servicios.LoginService"%>
+<%@page import="com.demo.producto.Usuario"%>
 <%@page import="com.demo.producto.Estados"%>
 <%@page import="com.demo.servicios.DB"%>
 <%@page import="java.util.Collection"%>
@@ -13,14 +15,13 @@
         <%@include file="WEB-INF/vista/cabecera.jspf" %>
         <%@include file="WEB-INF/vista/menu.jspf" %>
         <%
-            Collection<Tareas> lista = DB.getAllTareas();
+            Collection<Tareas> lista = (Collection<Tareas>)request.getAttribute("lista");
         %>
         <h1 style="text-align: center"> TAREAS POR HACER </h1>
         <table class="table table-hover" >
             <tr>
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
-                <th> ID USUARIO </th>
                 <th> CAMBIAR ESTADO </th>
                 <th>  </th>
             </tr>
@@ -30,9 +31,8 @@
             <tr>
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getIDUsuario()%></td>
-                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&actualEstado=<%= t.getEstado().getValor()%>&nuevoEstado=enproceso"> En proceso </a> </td>
-                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&actualEstado=<%= t.getEstado().getValor()%>&nuevoEstado=hecho"> Hecho </a> </td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&nuevoEstado=enproceso"> En proceso </a> </td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&nuevoEstado=hecho"> Hecho </a> </td>
             </tr>
             <% }
                 }%>
@@ -43,7 +43,6 @@
             <tr>
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
-                <th> ID USUARIO </th>
                 <th> CAMBIAR ESTADO </th>
                 <th>  </th>
             </tr>
@@ -52,9 +51,8 @@
             <tr>
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getIDUsuario()%></td>
-                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&actualEstado=<%= t.getEstado().getValor()%>&nuevoEstado=hacer"> Por hacer </a> </td>
-                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&actualEstado=<%= t.getEstado().getValor()%>&nuevoEstado=hecho"> Hecho </a> </td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&nuevoEstado=hacer"> Por hacer </a> </td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&nuevoEstado=hecho"> Hecho </a> </td>
             </tr>
             <% }
                 }%>
@@ -65,16 +63,16 @@
             <tr>
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
-                <th> ESTADO </th>
-                <th> ID USUARIO </th>
+                <th> CAMBIAR ESTADO </th>
+                <th>  </th>
             </tr>
             <% for (Tareas t : lista) {
                 if (t.getEstado() == Estados.DONE) {%>
             <tr>
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getEstado().getValor()%> </td>
-                <td> <%= t.getIDUsuario()%></td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&nuevoEstado=hacer"> Por hacer </a> </td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&nuevoEstado=enproceso"> En proceso </a> </td>
             </tr>
             <% }
                 }%>

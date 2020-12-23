@@ -24,7 +24,6 @@
             <tr>
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
-                <th> ESTADO </th>
                 <th> ID USUARIO </th>
             </tr>
             <% for (Tareas t : lista) {
@@ -32,7 +31,6 @@
             <tr>
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getEstado().getValor()%> </td>
                 <td> <%= t.getIDUsuario()%></td>
             </tr>
             <% }
@@ -44,7 +42,6 @@
             <tr>
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
-                <th> ESTADO </th>
                 <th> ID USUARIO </th>
             </tr>
             <% for (Tareas t : lista) {
@@ -52,7 +49,6 @@
             <tr>
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getEstado().getValor()%> </td>
                 <td> <%= t.getIDUsuario()%></td>
             </tr>
             <% }
@@ -64,7 +60,6 @@
             <tr>
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
-                <th> ESTADO </th>
                 <th> ID USUARIO </th>
             </tr>
             <% for (Tareas t : lista) {
@@ -72,7 +67,6 @@
             <tr>
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
-                <td> <%= t.getEstado().getValor()%> </td>
                 <td> <%= t.getIDUsuario()%></td>
             </tr>
             <% }

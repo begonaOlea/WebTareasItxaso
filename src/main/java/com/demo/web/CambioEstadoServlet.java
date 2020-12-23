@@ -2,7 +2,6 @@ package com.demo.web;
 
 import com.demo.servicios.DB;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,16 +16,13 @@ public class CambioEstadoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // PARAMETROS
         String paramId = req.getParameter("id");
-        String paramActualEstado = req.getParameter("actualEstado");
-        String paramNuevoEstado = req.getParameter("nuevoEstado");
-
+        String paramEstado = req.getParameter("nuevoEstado");
+        
         int id = 0;
         boolean valido = true;
 
         String mensajeId = null;
-        String mensajeActualEstado = null;
-        String mensajeNuevoEstado = null;
-        String mensajeTodoInprogress = null;
+        String mensajeEstado = null;
         String mensajeException = null;
 
         // VALIDAR
@@ -35,38 +31,30 @@ public class CambioEstadoServlet extends HttpServlet {
             valido = false;
         }
 
-        if (paramActualEstado == null || paramActualEstado.trim().length() == 0) {
-            mensajeActualEstado = "Debe seleccionar el estado actual.";
-            valido = false;
-        }
-        
-        if (paramNuevoEstado == null || paramNuevoEstado.trim().length() == 0) {
-            mensajeNuevoEstado = "Debe seleccionar el estado al que cambiar.";
+        if (paramEstado == null || paramEstado.trim().length() == 0) {
+            mensajeEstado = "Debe seleccionar el estado al que cambiar.";
             valido = false;
         }
 
-        if (paramActualEstado.equals("hacer") && paramNuevoEstado.equals("enproceso")) {
+        if(mensajeEstado == null || mensajeId == null){
             id = Integer.parseInt(paramId);
-            DB.TodoAInprocess(id);
+            switch(paramEstado){
+                case "hacer":
+                    DB.CambiarEstado(id, paramEstado);
+                case "enproceso":
+                    DB.CambiarEstado(id, paramEstado);
+                case "hecho":
+                    DB.CambiarEstado(id, paramEstado);
+            }
+            
         }
         
-        if (paramActualEstado.equals("hacer") && paramNuevoEstado.equals("hecho")) {
-            id = Integer.parseInt(paramId);
-            DB.TodoADone(id);
-        }
-        
-        if (paramActualEstado.equals("enproceso") && paramNuevoEstado.equals("hacer")) {
-            id = Integer.parseInt(paramId);
-            DB.InprocessATodo(id);
-        }
-        
-        if (paramActualEstado.equals("enproceso") && paramNuevoEstado.equals("hecho")) {
-            id = Integer.parseInt(paramId);
-            DB.InprocessADone(id);
+        if (! valido){
+            req.setAttribute("mensajeId", mensajeId);
+            req.setAttribute("mensajeEstado", mensajeEstado);
         }
         
         RequestDispatcher rd = req.getRequestDispatcher("ListaTareaPorUsuario.jsp");
-        req.setAttribute("mensajeId", mensajeId);
         rd.forward(req, resp);
     }
 }

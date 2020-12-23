@@ -17,6 +17,7 @@ public class LoginService {
                 break;
             }
         }
+        
         if (usrEncontrado == null) {
             // Si el correo no es correcto --> Lanzar exception
             throw new LoginException("Usuario no existe. Introduzca un correo valido.");
