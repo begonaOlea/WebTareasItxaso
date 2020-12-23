@@ -32,7 +32,7 @@
                 <td> <%= t.getDescripcion()%></td>
                 <td> <%= t.getEstado().getValor()%> </td>
                 <td> <%= t.getIDUsuario()%></td>
-                <td> CREA UN SERVLET </td>
+                <td> <a href="todo-inprogress?id=<%= t.getIDTarea()%>"> En proceso </a> </td>
             </tr>
             <% }
                 }%>
