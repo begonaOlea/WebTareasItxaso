@@ -55,6 +55,16 @@ public class CambioEstadoServlet extends HttpServlet {
             DB.TodoADone(id);
         }
         
+        if (paramActualEstado.equals("enproceso") && paramNuevoEstado.equals("hacer")) {
+            id = Integer.parseInt(paramId);
+            DB.InprocessATodo(id);
+        }
+        
+        if (paramActualEstado.equals("enproceso") && paramNuevoEstado.equals("hecho")) {
+            id = Integer.parseInt(paramId);
+            DB.InprocessADone(id);
+        }
+        
         RequestDispatcher rd = req.getRequestDispatcher("ListaTareaPorUsuario.jsp");
         req.setAttribute("mensajeId", mensajeId);
         rd.forward(req, resp);

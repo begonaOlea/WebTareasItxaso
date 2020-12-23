@@ -21,7 +21,7 @@
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
                 <th> ID USUARIO </th>
-                <th>  </th>
+                <th> CAMBIAR ESTADO </th>
                 <th>  </th>
             </tr>
             <% for (Tareas t : lista) {
@@ -44,8 +44,8 @@
                 <th> ID TAREA </th>
                 <th> DESCRIPCION </th>
                 <th> ID USUARIO </th>
-                <th> POR HACER </th>
-                <th> HECHO </th>
+                <th> CAMBIAR ESTADO </th>
+                <th>  </th>
             </tr>
             <% for (Tareas t : lista) {
                     if (t.getEstado() == Estados.INPROGRESS) {%>
@@ -53,6 +53,8 @@
                 <td> <%= t.getIDTarea()%>  </td>
                 <td> <%= t.getDescripcion()%></td>
                 <td> <%= t.getIDUsuario()%></td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&actualEstado=<%= t.getEstado().getValor()%>&nuevoEstado=hacer"> Por hacer </a> </td>
+                <td> <a href="cambio-estado?id=<%= t.getIDTarea()%>&actualEstado=<%= t.getEstado().getValor()%>&nuevoEstado=hecho"> Hecho </a> </td>
             </tr>
             <% }
                 }%>
